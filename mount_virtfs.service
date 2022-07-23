@@ -1,0 +1,12 @@
+[Unit]
+Description=mount shared folder
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mount -t 9p -o trans=virtio shared_folder /home/matt/shared -oversion=9p2000.L
+ExecStop=/usr/bin/umount /home/matt/shared
+RemainAfterExit=true
+#StandardOutout=journal
+
+[Install]
+WantedBy=default.target
