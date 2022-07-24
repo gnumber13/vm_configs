@@ -22,7 +22,10 @@ if [ ! -z "$(dnf --version  2> /dev/null)" ];then
     sudo systemctl enable sddm
 fi
 
-[ ! -z "$(apt --version  2> /dev/null)" ] && sudo apt install sddm -y 
+if [ ! -z "$(apt --version  2> /dev/null)" ] 
+    sudo apt install sddm -y 
+    sudo dpkg-reconfigure sddm
+fi
 
 
 [ ! -d "$HOME/shared" ] && mkdir -p "$HOME/shared"
